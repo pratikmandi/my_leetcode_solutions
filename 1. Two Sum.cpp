@@ -1,13 +1,33 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
+//Optimized Solution: O(n):
+
+    unordered_map<int, int> mpp;
     for (int i = 0; i < nums.size(); i++) {
-        for (int j = i + 1; j < nums.size(); j++) {
-            if (nums[i] + nums[j] == target) {
-                return {i, j};
-            }
+        int num = nums[i];
+        int moreNeeded = target - num;
+        if (mpp.find(moreNeeded) != mpp.end()) {
+            return {mpp[moreNeeded], i};
         }
+        mpp[num] = i;
     }
-    return {};
-  }
+    return { -1, -1};
+    }
 };
+
+//Brute-force: O(n^2):
+
+// class Solution {
+// public:
+//     vector<int> twoSum(vector<int>& nums, int target) {
+//     for (int i = 0; i < nums.size(); i++) {
+//         for (int j = i + 1; j < nums.size(); j++) {
+//             if (nums[i] + nums[j] == target) {
+//                 return {i, j};
+//             }
+//         }
+//     }
+//     return {};
+//   }
+// };
