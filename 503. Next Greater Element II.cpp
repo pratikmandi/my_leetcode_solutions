@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> nextGreaterElements(vector<int>& nums) {
         
-    //Optimised(Using Monotonic Stack): Time: Space:
+    //Optimised(Using Monotonic Stack): Time: O(4n) Space: O(2n)
         int n=nums.size();
         stack<int> st;
         vector<int> nge(n,-1);
